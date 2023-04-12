@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Header from './Header';
 import { fetchCurrencies, savesExpenses } from '../redux/actions';
 import fetchAPI from '../services/fetchAPI';
 
@@ -34,19 +33,15 @@ class Wallet extends Component {
 
     const getAPI = await fetchAPI();
     const id = expenses.length;
-    const usedExchange = getAPI[currencie].ask;
-    const currencyName = getAPI[currencie].name.split('/')[0];
-    const valueInReal = usedExchange * value;
-
+    const exchangeRates = getAPI;
     dispatch(savesExpenses({ id,
       value,
-      currencie,
-      currencyName,
-      paymentMethod,
-      category,
       description,
-      usedExchange,
-      valueInReal }));
+      currency: currencie,
+      method: paymentMethod,
+      tag: category,
+      exchangeRates,
+    }));
 
     this.setState({
       value: '',
@@ -59,75 +54,72 @@ class Wallet extends Component {
     const { value, currencie, paymentMethod, category, description } = this.state;
 
     return (
-      <>
-        <Header />
-        <form onSubmit={ this.submitForm }>
-          <label>
-            Valor:
-            <input
-              type="number"
-              name="value"
-              value={ value }
-              onChange={ this.onInputChange }
-              data-testid="value-input"
-            />
-          </label>
-          <label>
-            Moeda:
-            <select
-              name="currencie"
-              value={ currencie }
-              onChange={ this.onInputChange }
-              data-testid="currency-input"
-            >
-              {currencies.map((currency) => (
-                <option key={ currency }>{currency}</option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Método de pagamento:
-            <select
-              name="paymentMethod"
-              value={ paymentMethod }
-              onChange={ this.onInputChange }
-              data-testid="method-input"
-            >
-              <option>Dinheiro</option>
-              <option>Cartão de crédito</option>
-              <option>Cartão de débito</option>
-            </select>
-          </label>
-          <label>
-            Categoria:
-            <select
-              name="category"
-              value={ category }
-              onChange={ this.onInputChange }
-              data-testid="tag-input"
-            >
-              <option>Alimentação</option>
-              <option>Lazer</option>
-              <option>Trabalho</option>
-              <option>Transporte</option>
-              <option>Saúde</option>
-            </select>
-          </label>
-          <label>
-            Descrição:
-            <input
-              type="text"
-              name="description"
-              value={ description }
-              onChange={ this.onInputChange }
-              data-testid="description-input"
-            />
-          </label>
-          <button>
-            Adicionar despesa
-          </button>
-        </form>
-      </>
+      <form onSubmit={ this.submitForm }>
+        <label>
+          Valor:
+          <input
+            type="number"
+            name="value"
+            value={ value }
+            onChange={ this.onInputChange }
+            data-testid="value-input"
+          />
+        </label>
+        <label>
+          Moeda:
+          <select
+            name="currencie"
+            value={ currencie }
+            onChange={ this.onInputChange }
+            data-testid="currency-input"
+          >
+            {currencies.map((currency) => (
+              <option key={ currency }>{currency}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Método de pagamento:
+          <select
+            name="paymentMethod"
+            value={ paymentMethod }
+            onChange={ this.onInputChange }
+            data-testid="method-input"
+          >
+            <option>Dinheiro</option>
+            <option>Cartão de crédito</option>
+            <option>Cartão de débito</option>
+          </select>
+        </label>
+        <label>
+          Categoria:
+          <select
+            name="category"
+            value={ category }
+            onChange={ this.onInputChange }
+            data-testid="tag-input"
+          >
+            <option>Alimentação</option>
+            <option>Lazer</option>
+            <option>Trabalho</option>
+            <option>Transporte</option>
+            <option>Saúde</option>
+          </select>
+        </label>
+        <label>
+          Descrição:
+          <input
+            type="text"
+            name="description"
+            value={ description }
+            onChange={ this.onInputChange }
+            data-testid="description-input"
+          />
+        </label>
+        <button>
+          Adicionar despesa
+        </button>
+      </form>
     );
   }
 }

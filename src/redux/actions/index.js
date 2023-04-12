@@ -27,8 +27,16 @@ const savesExpenses = (expenses) => ({
   },
 });
 
+const deleteExpenses = (id) => ({
+  type: 'DELETE_EXPENSES',
+  payload: {
+    id,
+  },
+});
+
 export {
   saveUserEmail,
   fetchCurrencies,
   savesExpenses,
+  deleteExpenses,
 };
