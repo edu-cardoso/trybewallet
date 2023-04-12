@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(0,172,255);
+  background: linear-gradient(180deg, rgba(0,172,255,0.9304096638655462) 0%, rgba(1, 46, 196, 0.956) 47%, rgba(0, 32, 119, 0.95) 100%);
+  width: 100vw;
+  height: 100vh;
+}
+
+.walletContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+.walletLogo {
+  width: 220px;
+  margin: 45px 0;
+}
+
+.emailContainer, .passwordContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: 40px;
+  background-color: aliceblue;
+  padding-left: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid rgb(120, 174, 255);
+}
+
+.emailInput, .passwordInput {
+  outline: none;
+  border: none;
+  height: 100%;
+  width: 100%;
+  padding: 10px 10px 10px 5px;
+  background-color:aliceblue;
+  border-radius: 8px;
+}
+
+.emailContainer span, .passwordContainer span {
+  color: rgb(141, 141, 141);
+  font-size: 25px;
+}
+
+.loginBtn {
+  width: 280px;
+  height: 40px;
+  background-color: rgb(104, 187, 255);
+  transition: .2s ease;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.loginBtn:hover {
+  opacity: 1;
+  background-color: rgb(60, 167, 255);
+}
+
+.developedBy {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 20px;
+  color: rgb(128, 179, 255);
+}
+
+.developedBy a {
+  text-decoration: none;
+  color: rgb(128, 179, 255);
+}

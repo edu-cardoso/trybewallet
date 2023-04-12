@@ -31,11 +31,13 @@ class Wallet extends Component {
     const { dispatch, expenses } = this.props;
     const { value, currencie, paymentMethod, category, description } = this.state;
 
+    const newValue = value.replace(',', '.');
+
     const getAPI = await fetchAPI();
     const id = expenses.length;
     const exchangeRates = getAPI;
     dispatch(savesExpenses({ id,
-      value,
+      value: newValue,
       description,
       currency: currencie,
       method: paymentMethod,
@@ -58,7 +60,7 @@ class Wallet extends Component {
         <label>
           Valor:
           <input
-            type="number"
+            type="text"
             name="value"
             value={ value }
             onChange={ this.onInputChange }

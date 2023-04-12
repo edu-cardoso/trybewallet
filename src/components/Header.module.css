@@ -1,0 +1,25 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.walletLogo {
+  width: 150px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  color: rgb(82, 82, 82);
+}
+
+.user span{
+  color: rgb(59, 59, 59);
+  margin-right: 7px;
+}
+
+.total {
+  text-align: end;
+  color: rgb(82, 82, 82);
+}

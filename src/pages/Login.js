@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { saveUserEmail } from '../redux/actions';
+import styles from './Login.module.css';
+import walletLogo from '../assets/walletLogo.svg';
 
 class Login extends Component {
   state = {
@@ -28,32 +30,57 @@ class Login extends Component {
       && regexEmail.test(email));
 
     return (
-      <>
-        <input
-          type="text"
-          name="email"
-          value={ email }
-          onChange={ this.onInputChange }
-          data-testid="email-input"
-        />
+      <div className={ styles.loginContainer }>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
 
-        <input
-          type="password"
-          name="password"
-          value={ password }
-          onChange={ this.onInputChange }
-          data-testid="password-input"
-        />
-
-        <Link to="/carteira">
-          <button
-            onClick={ () => dispatch(saveUserEmail(email)) }
-            disabled={ !validateLogin }
-          >
-            Entrar
-          </button>
-        </Link>
-      </>
+        <div className={ styles.walletContainer }>
+          <img src={ walletLogo } alt="wallet logo" className={ styles.walletLogo } />
+          <div className={ styles.emailContainer }>
+            <span className="material-symbols-outlined">
+              person
+            </span>
+            <input
+              type="text"
+              name="email"
+              value={ email }
+              placeholder="Usuário"
+              onChange={ this.onInputChange }
+              data-testid="email-input"
+              className={ styles.emailInput }
+            />
+          </div>
+          <div className={ styles.passwordContainer }>
+            <span className="material-symbols-outlined">
+              lock
+            </span>
+            <input
+              type="password"
+              name="password"
+              value={ password }
+              placeholder="Senha"
+              onChange={ this.onInputChange }
+              data-testid="password-input"
+              className={ styles.passwordInput }
+            />
+          </div>
+          <Link to="/carteira">
+            <button
+              onClick={ () => dispatch(saveUserEmail(email)) }
+              disabled={ !validateLogin }
+              className={ styles.loginBtn }
+            >
+              Entrar
+            </button>
+          </Link>
+        </div>
+        <p className={ styles.developedBy }>
+          Desenvolvido em React por
+          {' '}
+          <a href="https://github.com/edu-cardoso" target="_blank" rel="noreferrer">Eduardo Cardoso</a>
+        </p>
+      </div>
     );
   }
 }
