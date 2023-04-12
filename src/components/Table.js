@@ -29,7 +29,7 @@ class Table extends Component {
             }) => {
               const currencyInReal = Number(exchangeRates[currency].ask * value)
                 .toFixed(2);
-              const currencyName = exchangeRates[currency].name;
+              const currencyName = exchangeRates[currency].name.split('/')[0];
               const exchangeRate = Number(exchangeRates[currency].ask).toFixed(2);
               return (
                 <tr key={ id }>

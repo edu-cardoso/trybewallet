@@ -1,7 +1,9 @@
 .headerContainer {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 20px 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .walletLogo {
@@ -14,7 +16,7 @@
   color: rgb(82, 82, 82);
 }
 
-.user span{
+.user span {
   color: rgb(59, 59, 59);
   margin-right: 7px;
 }

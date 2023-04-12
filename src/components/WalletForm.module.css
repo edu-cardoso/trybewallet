@@ -1,0 +1,44 @@
+.formContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+}
+
+.formField input,
+select {
+  border: none;
+  outline: none;
+  background-color: aliceblue;
+  border-radius: 5px;
+  height: 40px;
+  width: 180px;
+  padding: 0 8px;
+  margin-right: 10px;
+  border: 1px solid rgb(120, 174, 255);
+}
+
+.formField p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.addExpenseBtn {
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 8px;
+  background-color: rgb(32, 192, 0);
+}
