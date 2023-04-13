@@ -1,0 +1,38 @@
+.tableContainer {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.tableHeadContainer {
+  background-color: aliceblue;
+}
+
+.tableTitle {
+  width: 200px;
+  padding: 10px;
+}
+
+.tableData {
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  max-width: 200px;
+  overflow: hidden;
+	overflow-wrap: break-word;
+}
+
+.deleteExpenseBtn {
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(255, 63, 63);
+  width: 80%;
+  font-size: 15px;
+  transition: .2s ease;
+}
+
+.deleteExpenseBtn:hover {
+  background-color: rgb(223, 0, 0);
+}
