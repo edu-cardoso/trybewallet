@@ -19,7 +19,7 @@ class Table extends Component {
             <th className={ styles.tableTitle }>Câmbio utilizado</th>
             <th className={ styles.tableTitle }>Valor convertido</th>
             <th className={ styles.tableTitle }>Moeda de conversão</th>
-            <th className={ styles.tableTitle }>Editar/Excluir</th>
+            <th className={ styles.tableTitle }>Editar / Excluir</th>
           </tr>
         </thead>
 
@@ -43,6 +43,11 @@ class Table extends Component {
                   <td className={ styles.tableData }>{currencyInReal}</td>
                   <td className={ styles.tableData }>Real</td>
                   <td className={ styles.tableData }>
+                    <button
+                      className={ styles.editExpenseBtn }
+                    >
+                      Editar
+                    </button>
                     <button
                       className={ styles.deleteExpenseBtn }
                       data-testid="delete-btn"

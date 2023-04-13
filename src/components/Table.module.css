@@ -21,11 +21,28 @@
 	overflow-wrap: break-word;
 }
 
+.editExpenseBtn {
+  cursor: pointer;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 3px;
+  color: white;
+  background-color: rgb(226, 211, 0);
+  width: 80%;
+  font-size: 15px;
+  transition: .2s ease;
+  margin-bottom: 5px;
+}
+
+.editExpenseBtn:hover {
+  background-color: rgb(211, 190, 0);
+}
+
 .deleteExpenseBtn {
   cursor: pointer;
   border: none;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 8px 10px;
+  border-radius: 3px;
   color: white;
   background-color: rgb(255, 63, 63);
   width: 80%;

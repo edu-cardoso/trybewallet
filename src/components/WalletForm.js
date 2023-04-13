@@ -48,6 +48,9 @@ class Wallet extends Component {
 
     this.setState({
       value: '',
+      currencie: 'USD',
+      paymentMethod: 'Dinheiro',
+      category: 'Alimentação',
       description: '',
     });
   };
