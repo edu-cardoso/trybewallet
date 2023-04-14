@@ -34,9 +34,25 @@ const deleteExpenses = (id) => ({
   },
 });
 
+const expenseID = (id) => ({
+  type: 'EDITED_EXPENSES_ID',
+  payload: {
+    id,
+  },
+});
+
+const editMode = (edit) => ({
+  type: 'EDIT_MODE',
+  payload: {
+    edit,
+  },
+});
+
 export {
   saveUserEmail,
   fetchCurrencies,
   savesExpenses,
   deleteExpenses,
+  expenseID,
+  editMode,
 };

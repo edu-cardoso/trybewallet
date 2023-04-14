@@ -1,7 +1,13 @@
+/* eslint-disable react/jsx-indent */
+/* eslint-disable indent */
 import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchCurrencies, savesExpenses } from '../redux/actions';
+import { fetchCurrencies,
+  savesExpenses,
+  deleteExpenses,
+  editMode } from '../redux/actions';
 import fetchAPI from '../services/fetchAPI';
 import styles from './WalletForm.module.css';
 
@@ -29,13 +35,13 @@ class Wallet extends Component {
   submitForm = async (event) => {
     event.preventDefault();
 
-    const { dispatch, expenses } = this.props;
+    const { dispatch } = this.props;
     const { value, currencie, paymentMethod, category, description } = this.state;
 
     const newValue = value.replace(',', '.');
 
     const getAPI = await fetchAPI();
-    const id = expenses.length;
+    const id = uuidv4();
     const exchangeRates = getAPI;
     dispatch(savesExpenses({ id,
       value: newValue,
@@ -55,9 +61,19 @@ class Wallet extends Component {
     });
   };
 
+  sendEditedExpense = (editedExpenseID, edit) => {
+    const { dispatch } = this.props;
+    dispatch(deleteExpenses(editedExpenseID));
+    dispatch(editMode(edit));
+  };
+
   render() {
-    const { currencies } = this.props;
+    // eslint-disable-next-line react/prop-types, no-shadow
+    const { currencies, editMode, editedExpenseID } = this.props;
     const { value, currencie, paymentMethod, category, description } = this.state;
+
+    // eslint-disable-next-line no-magic-numbers
+    const isValidBtn = (description.length >= 3);
 
     return (
       <form onSubmit={ this.submitForm } className={ styles.formContainer }>
@@ -122,9 +138,21 @@ class Wallet extends Component {
             data-testid="description-input"
           />
         </div>
-        <button className={ styles.addExpenseBtn }>
-          Adicionar despesa
-        </button>
+        { editMode
+          ? <button
+              className={ styles.addEditedExpenseBtn }
+              disabled={ !isValidBtn }
+              onClick={ () => this.sendEditedExpense(editedExpenseID, false) }
+          >
+              Editar despesa
+            </button>
+          : <button
+              disabled={ !isValidBtn }
+              className={ styles.addExpenseBtn }
+          >
+              Adicionar despesa
+            </button> }
+
       </form>
     );
   }
@@ -133,12 +161,13 @@ class Wallet extends Component {
 Wallet.propTypes = {
   dispatch: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  expenses: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
 };
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
   expenses: state.wallet.expenses,
+  editMode: state.wallet.editMode,
+  editedExpenseID: state.wallet.editedExpenseID,
 });
 
 export default connect(mapStateToProps)(Wallet);

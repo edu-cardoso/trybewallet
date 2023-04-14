@@ -1,6 +1,8 @@
 const INITAL_STATE = {
   currencies: [],
   expenses: [],
+  editedExpenseID: null,
+  editMode: false,
 };
 
 const wallet = (state = INITAL_STATE, action) => {
@@ -21,6 +23,18 @@ const wallet = (state = INITAL_STATE, action) => {
     return {
       ...state,
       expenses: state.expenses.filter(({ id }) => action.payload.id !== id),
+    };
+  }
+  case 'EDITED_EXPENSES_ID': {
+    return {
+      ...state,
+      editedExpenseID: action.payload.id,
+    };
+  }
+  case 'EDIT_MODE': {
+    return {
+      ...state,
+      editMode: action.payload.edit,
     };
   }
   default: return state;

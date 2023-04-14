@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteExpenses } from '../redux/actions';
+import { deleteExpenses, expenseID, editMode } from '../redux/actions';
 import styles from './Table.module.css';
 
 class Table extends Component {
+  editExpense = (id) => {
+    const { dispatch } = this.props;
+    dispatch(expenseID(id));
+    dispatch(editMode(true));
+  };
+
   render() {
     const { expenses, dispatch } = this.props;
     return (
@@ -45,6 +51,7 @@ class Table extends Component {
                   <td className={ styles.tableData }>
                     <button
                       className={ styles.editExpenseBtn }
+                      onClick={ () => this.editExpense(id) }
                     >
                       Editar
                     </button>
