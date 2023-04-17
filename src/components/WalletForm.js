@@ -72,8 +72,9 @@ class Wallet extends Component {
     const { currencies, editMode, editedExpenseID } = this.props;
     const { value, currencie, paymentMethod, category, description } = this.state;
 
+    const onlyNumbers = /^[\d.,]+$/;
     // eslint-disable-next-line no-magic-numbers
-    const isValidBtn = (description.length >= 3);
+    const isValidBtn = (description.length >= 3 && onlyNumbers.test(value));
 
     return (
       <form onSubmit={ this.submitForm } className={ styles.formContainer }>
