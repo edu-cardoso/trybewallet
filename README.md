@@ -8,7 +8,6 @@ Deploy do projeto: https://edu-cardoso-trybewallet.netlify.app/
 - React.js
 - React Router
 - Redux
-- Redux thunk
 - RTL
 
 
