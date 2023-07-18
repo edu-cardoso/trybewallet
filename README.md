@@ -1,5 +1,3 @@
-Deploy do projeto: https://edu-cardoso-trybewallet.netlify.app/
-
 ## Stack utilizada
 
 - HTML5
